@@ -1,10 +1,21 @@
+import Quill from 'quill';
 import defaultsDeep from 'lodash/defaultsDeep';
 import DefaultOptions from './DefaultOptions';
-import { DisplaySize } from './modules/DisplaySize';
-import { Toolbar } from './modules/Toolbar';
-import { Resize } from './modules/Resize';
+import {
+    DisplaySize
+} from './modules/DisplaySize';
+import {
+    Toolbar
+} from './modules/Toolbar';
+import {
+    Resize
+} from './modules/Resize';
 
-const knownModules = { DisplaySize, Toolbar, Resize };
+const knownModules = {
+    DisplaySize,
+    Toolbar,
+    Resize
+};
 
 /**
  * Custom module for quilljs to allow user to resize <img> elements
@@ -50,7 +61,7 @@ export default class ImageResize {
         this.removeModules();
 
         this.modules = this.moduleClasses.map(
-            ModuleClass => new (knownModules[ModuleClass] || ModuleClass)(this),
+            ModuleClass => new(knownModules[ModuleClass] || ModuleClass)(this),
         );
 
         this.modules.forEach(
@@ -188,13 +199,13 @@ export default class ImageResize {
     checkImage = (evt) => {
         if (this.img) {
             if (evt.keyCode == 46 || evt.keyCode == 8) {
-                window.Quill.find(this.img).deleteAt(0);
+                Quill.find(this.img).deleteAt(0);
             }
             this.hide();
         }
     };
 }
 
-if (window.Quill) {
-    window.Quill.register('modules/imageResize', ImageResize);
+if (Quill) {
+    Quill.register('modules/imageResize', ImageResize);
 }

@@ -7,7 +7,7 @@ import IconRedo from 'quill/assets/icons/redo.svg'
 
 import { BaseModule } from './BaseModule';
 
-const Parchment = Quill.imports.parchment;
+const Parchment = Quill.import('parchment');
 const FloatStyle = new Parchment.Attributor.Style('float', 'float');
 const MarginStyle = new Parchment.Attributor.Style('margin', 'margin');
 const DisplayStyle = new Parchment.Attributor.Style('display', 'display');

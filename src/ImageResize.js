@@ -6,16 +6,22 @@ import { Resize } from './modules/Resize';
 
 const knownModules = { DisplaySize, Toolbar, Resize };
 
+class Module {
+    constructor(quill, options = {}) {
+      this.quill = quill;
+      this.options = options;
+    }
+  }
+
 /**
  * Custom module for quilljs to allow user to resize <img> elements
  * (Works on Chrome, Edge, Safari and replaces Firefox's native resize behavior)
  * @see https://quilljs.com/blog/building-a-custom-module/
  */
-export default class ImageResize {
+export default class ImageResize extends Module {
 
     constructor(quill, options = {}) {
-        // save the quill reference and options
-        this.quill = quill;
+        super(quill, options);
 
         // Apply the options to our defaults, and stash them for later
         // defaultsDeep doesn't do arrays as you'd expect, so we'll need to apply the classes array from options separately
